@@ -14,7 +14,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip-ci')"
     strategy:
       matrix:
-        kind: ['linux', 'windows', 'macOS']
+        kind: ['macOS']
         include:
           - kind: linux
             os: ubuntu-latest
