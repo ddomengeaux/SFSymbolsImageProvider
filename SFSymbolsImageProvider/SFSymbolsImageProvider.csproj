@@ -1,0 +1,29 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;xamarin.ios10;</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Version>0.2.0</Version>
+    <Title>SF Symbols Image Provider</Title>
+    <Authors>Daniel Domengeaux</Authors>
+    <Description>Provides SF Symbols Image Source for Xamarin.Forms</Description>
+    <PackageProjectUrl>https://github.com/ddomengeaux/SFSymbolsImageProvider</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/ddomengeaux/SFSymbolsImageProvider.git</RepositoryUrl>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="*.cs" />
+    
+    <Compile Remove="*.iOS.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+  </ItemGroup>
+             
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.ios')) ">
+    <None Remove="*.iOS.cs" />
+    <Compile Include="*.iOS.cs" />
+  </ItemGroup>
+</Project>
